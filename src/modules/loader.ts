@@ -63,9 +63,15 @@ export function setupLoadingScreen(): Promise<void> {
       }
       // After shrink transition, type the remaining letters
       setTimeout(async () => {
-        if (restJ) await loaderTypeWriter(restJ, 'ESSICA', 800);
-        if (restF) await loaderTypeWriter(restF, 'ERRARO', 800);
-        if (initialsEl) initialsEl.classList.remove('loader-initials--typing');
+        // Type both words simultaneously
+        const typeJ = restJ ? loaderTypeWriter(restJ, 'ESSICA', 800) : Promise.resolve();
+        const typeF = restF ? loaderTypeWriter(restF, 'ERRARO', 800) : Promise.resolve();
+        await Promise.all([typeJ, typeF]);
+        if (initialsEl) {
+          initialsEl.classList.remove('loader-initials--typing');
+          // Unify color: transition initials from green to standard text color
+          initialsEl.classList.add('loader-initials--unified');
+        }
       }, 600);
     }, 1800);
 
