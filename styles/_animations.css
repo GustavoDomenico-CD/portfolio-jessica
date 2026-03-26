@@ -1,0 +1,52 @@
+/* styles/_animations.css */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Decorative horizontal line that expands on scroll-reveal */
+@keyframes lineExpand {
+  from { width: 0; }
+  to   { width: 40px; }
+}
+
+/* Subtle green pulse used for highlights */
+@keyframes greenPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 164, 67, 0); }
+  50%       { box-shadow: 0 0 12px 4px rgba(0, 164, 67, 0.12); }
+}
+
+/* Reduce motion override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

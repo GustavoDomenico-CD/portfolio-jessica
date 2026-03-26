@@ -1,0 +1,229 @@
+/* styles/_ai.css — Seção Propósito & Valores */
+
+/* ── 3D Orb Canvas ──────────────────────────────────────────── */
+
+.ai-orb-wrap {
+  width: 100%;
+  margin: 0 auto var(--space-6);
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  mask-image: radial-gradient(ellipse 80% 90% at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at center, black 60%, transparent 100%);
+}
+
+#ai-orb-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Mission Quote ─────────────────────────────────────────── */
+
+.ai-mission {
+  position: relative;
+  margin: 0 auto var(--space-7);
+  max-width: 720px;
+  padding: var(--space-6) var(--space-7);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-green);
+  line-height: var(--lh-base);
+  letter-spacing: 0.01em;
+  border: none;
+  background: radial-gradient(ellipse at center, rgba(0, 164, 67, 0.06) 0%, transparent 70%);
+  border-radius: var(--radius-lg);
+}
+
+.ai-mission::before,
+.ai-mission::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-green), transparent);
+}
+
+.ai-mission::before { top: 0; }
+.ai-mission::after  { bottom: 0; }
+
+/* ── Ethics Grid ───────────────────────────────────────────── */
+
+.ai-ethics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-5);
+  max-width: 900px;
+  margin: var(--space-6) auto 0;
+  align-items: start;
+}
+
+/* ── Ethics Card ───────────────────────────────────────────── */
+
+.ai-ethics-card {
+  text-align: center;
+  padding: var(--space-6) var(--space-5);
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 164, 67, 0.12);
+  transition:
+    transform var(--transition-spring),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ai-ethics-card:focus-visible {
+  outline: 2px solid rgba(0, 164, 67, 0.6);
+  outline-offset: 2px;
+}
+
+.ai-ethics-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center top, rgba(0, 164, 67, 0.06), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.ai-ethics-card:hover,
+.ai-ethics-card.open {
+  border-color: rgba(0, 164, 67, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 164, 67, 0.08);
+}
+
+.ai-ethics-card:hover:not(.open) {
+  transform: translateY(-4px);
+}
+
+.ai-ethics-card:hover::before,
+.ai-ethics-card.open::before {
+  opacity: 1;
+}
+
+/* ── Card Face (always visible) ────────────────────────────── */
+
+.card-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ai-ethics-card i {
+  font-size: 1.75rem;
+  color: var(--color-green);
+  margin-bottom: var(--space-4);
+  display: block;
+  transition: transform var(--transition-spring);
+}
+
+.ai-ethics-card:hover i {
+  transform: scale(1.12);
+}
+
+.ai-ethics-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Toggle indicator ──────────────────────────────────────── */
+
+.card-toggle {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(0, 164, 67, 0.45);
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.35s ease, border-color var(--transition-base);
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+
+.card-toggle::before,
+.card-toggle::after {
+  content: '';
+  position: absolute;
+  background: var(--color-green);
+  border-radius: 1px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* horizontal bar */
+.card-toggle::before {
+  width: 8px;
+  height: 1.5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* vertical bar */
+.card-toggle::after {
+  width: 1.5px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ai-ethics-card.open .card-toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.ai-ethics-card.open .card-toggle {
+  border-color: rgba(0, 164, 67, 0.8);
+}
+
+/* ── Card Body (collapsed by default) ─────────────────────── */
+
+.card-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.ai-ethics-card.open .card-body {
+  grid-template-rows: 1fr;
+}
+
+.card-body-inner {
+  overflow: hidden;
+}
+
+/* ── Canvas inside card ────────────────────────────────────── */
+
+.card-canvas {
+  display: block;
+  width: 100%;
+  height: 150px;
+  margin-top: var(--space-5);
+}
+
+/* ── Card text ─────────────────────────────────────────────── */
+
+.ai-ethics-card p {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+  text-align: center;
+  margin: var(--space-4) 0 0;
+  max-width: none;
+  padding-bottom: var(--space-2);
+}

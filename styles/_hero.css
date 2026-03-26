@@ -1,0 +1,102 @@
+/* styles/_hero.css */
+
+.profile-section {
+  width: 100%;
+}
+
+.profile-header {
+  text-align: center;
+  padding: var(--space-8) 0 var(--space-7);
+  position: relative;
+}
+
+/* Decorative line above name */
+.profile-header::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--color-green));
+  margin: 0 auto var(--space-5);
+}
+
+.typing-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  font-weight: 300;
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text);
+  line-height: var(--lh-tight);
+  min-height: 1.2em;
+  margin-bottom: var(--space-3);
+}
+
+.profession {
+  font-size: var(--fs-xs);
+  color: var(--color-green);
+  font-weight: 400;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+.profession-sub {
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-7);
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 1.4s forwards;
+}
+
+/* ── Profile Image ───────────────────────────────────────── */
+
+.profile-image {
+  width: 220px;
+  height: 220px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  border: 2px solid rgba(0, 164, 67, 0.20);
+  box-shadow:
+    0 0 0 6px rgba(0, 164, 67, 0.06),
+    var(--shadow-green);
+  opacity: 0;
+  transform: scale(0.93);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+}
+
+.profile-image.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Skeleton shimmer for lazy images */
+img.lazy {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface) 25%,
+    var(--color-surface-2) 50%,
+    var(--color-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+img.loaded {
+  animation: none;
+  background: transparent;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

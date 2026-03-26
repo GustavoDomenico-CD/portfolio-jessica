@@ -1,0 +1,38 @@
+/* styles/_print.css */
+
+@media print {
+  .header,
+  #backToTop,
+  #scroll-progress,
+  #loading-screen,
+  .cursor-dot,
+  .cursor-ring,
+  .particles-canvas,
+  .hamburger-btn,
+  .nav-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .main-content {
+    padding-top: 0 !important;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.75em;
+    color: #555;
+  }
+}

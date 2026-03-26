@@ -1,0 +1,155 @@
+/* styles/_softwares.css — Formação Acadêmica */
+
+.softwares-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+
+.software-card {
+  background-color: #fff;
+  border: 1px solid rgba(13, 169, 255, 0.12);
+  border-top: 3px solid var(--color-blue);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--transition-spring),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.software-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(13, 169, 255, 0.05) 50%,
+    transparent 60%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.software-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(13, 169, 255, 0.30);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(13, 169, 255, 0.08);
+}
+
+.software-card:hover::before {
+  left: 130%;
+}
+
+/* ── Icon ─────────────────────────────────────────────────── */
+
+.software-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background-color: rgba(13, 169, 255, 0.10);
+  border: 1px solid rgba(13, 169, 255, 0.18);
+  margin-bottom: var(--space-4);
+  font-size: 1.25rem;
+  color: var(--color-blue);
+  transition: background-color var(--transition-fast);
+}
+
+.software-card:hover .software-icon {
+  background-color: rgba(13, 169, 255, 0.18);
+}
+
+/* ── Title ────────────────────────────────────────────────── */
+
+.software-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.01em;
+}
+
+.software-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-blue);
+  transition: width var(--transition-base);
+}
+
+.software-card:hover h3::after {
+  width: 100%;
+}
+
+/* ── Institution ──────────────────────────────────────────── */
+
+.software-institution {
+  font-size: var(--fs-sm);
+  color: var(--color-blue);
+  font-weight: 500;
+  margin-bottom: var(--space-1);
+  letter-spacing: 0.02em;
+}
+
+/* ── Year ─────────────────────────────────────────────────── */
+
+.software-year {
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+}
+
+/* ── Body ─────────────────────────────────────────────────── */
+
+.software-card p {
+  text-align: left;
+  margin: 0 0 var(--space-4);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: var(--lh-loose);
+}
+
+/* ── Tech Tags (status badge) ─────────────────────────────── */
+
+.software-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.software-tech span {
+  background-color: rgba(13, 169, 255, 0.08);
+  color: var(--color-blue);
+  border: 1px solid rgba(13, 169, 255, 0.18);
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.software-tech span.status-cursando {
+  background-color: rgba(0, 164, 67, 0.08);
+  color: var(--color-green);
+  border-color: rgba(0, 164, 67, 0.18);
+}

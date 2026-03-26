@@ -1,0 +1,120 @@
+/* styles/_layout.css */
+
+.main-content {
+  flex: 1;
+  padding: calc(var(--header-height) + var(--space-8)) var(--space-6) var(--space-8);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Footer ──────────────────────────────────────────── */
+
+.footer {
+  padding: var(--space-7) var(--space-5);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: var(--space-2) 0;
+  position: relative;
+  transition: color var(--transition-base);
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-green);
+  transition: width var(--transition-base);
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--color-green);
+}
+
+.footer-link:hover::after,
+.footer-link:focus-visible::after {
+  width: 100%;
+}
+
+.copyright {
+  color: var(--color-text-dim);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+}
+
+/* ── Back to Top ────────────────────────────────────────── */
+
+#backToTop {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  background-color: var(--color-green);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  width: 44px;
+  height: 44px;
+  font-size: var(--fs-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-spring),
+    background-color var(--transition-fast);
+}
+
+#backToTop.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background-color: var(--color-green-hover);
+}
+
+/* ── Offline Banner ──────────────────────────────────────── */
+
+.offline-message {
+  position: fixed;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-full);
+  z-index: 9999;
+  transition: opacity var(--transition-base);
+}
+
+.offline-message.hide {
+  opacity: 0;
+}

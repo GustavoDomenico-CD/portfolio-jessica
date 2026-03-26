@@ -1,0 +1,30 @@
+/* styles/main.css
+   Entry point — importa todos os partials na ordem correta.
+*/
+
+/* 1. Tokens */
+@import './_variables.css';
+
+/* 2. Base */
+@import './_reset.css';
+@import './_animations.css';
+@import './_effects.css';
+@import './_interactions.css';
+
+/* 3. Layout estrutural */
+@import './_layout.css';
+@import './_nav.css';
+
+/* 4. Seções */
+@import './_hero.css';
+@import './_sections.css';
+@import './_ai.css';
+@import './_skills.css';
+@import './_projects.css';
+@import './_softwares.css';
+@import './_certifications.css';
+@import './_contact.css';
+
+/* 5. Responsividade e impressão */
+@import './_responsive.css';
+@import './_print.css';
