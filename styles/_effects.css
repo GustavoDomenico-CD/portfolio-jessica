@@ -210,6 +210,13 @@
   letter-spacing: 0.22em;
 }
 
+/* After typing completes, unify initials color to match the rest of the name */
+.loader-initials--unified .loader-initial {
+  color: var(--color-text);
+  text-shadow: none;
+  transition: color 0.6s ease, text-shadow 0.6s ease;
+}
+
 /* Blinking cursor on the last word being typed */
 .loader-initials--typing .loader-word:last-child::after {
   content: '|';
