@@ -140,6 +140,11 @@
   gap: 0.4em;
   opacity: 0;
   animation: initialsReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  transition: gap 0.6s ease;
+}
+
+.loader-initials--expand {
+  gap: 0.3em;
 }
 
 .loader-initial {
@@ -150,6 +155,7 @@
   color: var(--color-green);
   text-shadow: 0 0 30px rgba(0, 164, 67, 0.4), 0 0 60px rgba(0, 164, 67, 0.15);
   opacity: 0;
+  transition: font-size 0.6s ease, font-weight 0.6s ease, letter-spacing 0.6s ease, text-shadow 0.6s ease;
 }
 
 .loader-initial--j {
@@ -182,29 +188,30 @@
   }
 }
 
-.loader-initials--hide {
-  animation: initialsFadeOut 0.6s ease forwards;
+/* ── Transition: initials shrink to name size ────────────────── */
+
+.loader-word {
+  display: inline-flex;
+  align-items: baseline;
 }
 
-@keyframes initialsFadeOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
+.loader-initials--expand .loader-initial {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: var(--color-green);
+  text-shadow: 0 0 20px rgba(0, 164, 67, 0.3), 0 0 40px rgba(0, 164, 67, 0.1);
+  transition: font-size 0.6s ease, font-weight 0.6s ease, letter-spacing 0.6s ease, text-shadow 0.6s ease;
 }
 
-/* ── Full name (typed after initials) ────────────────────────── */
-
-.loader-fullname {
-  display: none;
+.loader-rest {
+  display: inline;
+  color: var(--color-text);
+  letter-spacing: 0.22em;
 }
 
-/* Blinking cursor after the full name */
-.loader-fullname::after {
+/* Blinking cursor on the last word being typed */
+.loader-initials--typing .loader-word:last-child::after {
   content: '|';
   color: var(--color-green);
   animation: cursorBlink 0.8s step-end infinite;
