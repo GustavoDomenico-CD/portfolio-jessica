@@ -27,11 +27,12 @@ export function setupLoadingScreen(): Promise<void> {
     const loader = document.getElementById('loading-screen');
     if (!loader) { resolve(); return; }
 
-    const fill      = loader.querySelector<HTMLElement>('.loader-bar-fill');
-    const nameEl    = loader.querySelector<HTMLElement>('.loader-name');
-    const taglineEl = loader.querySelector<HTMLElement>('.loader-tagline');
-    const percentEl = loader.querySelector<HTMLElement>('.loader-percent');
-    const dotsEl    = loader.querySelector<HTMLElement>('.loader-dots');
+    const fill        = loader.querySelector<HTMLElement>('.loader-bar-fill');
+    const initialsEl  = loader.querySelector<HTMLElement>('.loader-initials');
+    const fullnameEl  = loader.querySelector<HTMLElement>('.loader-fullname');
+    const taglineEl   = loader.querySelector<HTMLElement>('.loader-tagline');
+    const percentEl   = loader.querySelector<HTMLElement>('.loader-percent');
+    const dotsEl      = loader.querySelector<HTMLElement>('.loader-dots');
 
     const start = performance.now();
 
@@ -50,13 +51,24 @@ export function setupLoadingScreen(): Promise<void> {
     };
     requestAnimationFrame(progressRAF);
 
+    // Phase 1: Show initials "J" and "F" with dramatic entrance (0ms)
+    // Initials are already in HTML, CSS handles the entrance animation
+
+    // Phase 2: After initials are shown, fade them out and type full name (1800ms)
     setTimeout(() => {
-      if (nameEl) loaderTypeWriter(nameEl, 'JESSICA FERRARO', 2800);
-    }, 800);
+      if (initialsEl) initialsEl.classList.add('loader-initials--hide');
+      setTimeout(() => {
+        if (initialsEl) initialsEl.style.display = 'none';
+        if (fullnameEl) {
+          fullnameEl.style.display = 'inline';
+          loaderTypeWriter(fullnameEl, 'JESSICA FERRARO', 2000);
+        }
+      }, 600);
+    }, 1800);
 
     setTimeout(() => {
       if (taglineEl) taglineEl.classList.add('loader-tagline--visible');
-    }, 4000);
+    }, 5000);
 
     const phases = [
       'Inicializando...',
