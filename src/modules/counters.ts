@@ -1,32 +1,3 @@
-// ─── Animated Skill Bars ──────────────────────────────────────────────────────
-
-export function setupSkillBars(): void {
-  const skillItems = document.querySelectorAll<HTMLElement>('.skill-item[data-level]');
-  if (!skillItems.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const item = entry.target as HTMLElement;
-        const level = item.dataset['level'] ?? '0';
-        const bar = item.querySelector<HTMLElement>('.skill-bar-fill');
-
-        if (bar) {
-          setTimeout(() => {
-            bar.style.width = `${level}%`;
-          }, 200);
-        }
-
-        observer.unobserve(item);
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  skillItems.forEach((item) => observer.observe(item));
-}
-
 // ─── Animated Counters ────────────────────────────────────────────────────────
 
 function animateCounter(el: HTMLElement, target: number, duration = 1800): void {
