@@ -118,7 +118,7 @@
   50%       { filter: drop-shadow(0 0 32px rgba(0,164,67,0.40)); }
 }
 
-/* ── Name (typed by JS) ──────────────────────────────────────── */
+/* ── Name (slide-in animation) ───────────────────────────────── */
 
 .loader-name {
   font-family: var(--font-display);
@@ -128,106 +128,40 @@
   text-transform: uppercase;
   color: var(--color-text);
   text-align: center;
-  min-height: 1.3em;
   position: relative;
   z-index: 1;
 }
 
-/* ── Initials reveal ─────────────────────────────────────────── */
+.loader-name-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+}
 
-.loader-initials {
-  display: inline-flex;
-  gap: 0.4em;
+.loader-name-line {
+  display: block;
   opacity: 0;
-  animation: initialsReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
-  transition: gap 0.6s ease;
+  transform: translateX(-40px);
 }
 
-.loader-initials--expand {
-  gap: 0.3em;
+.loader-name-line--jessica {
+  animation: nameSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
 }
 
-.loader-initial {
-  display: inline-block;
-  font-size: clamp(3.5rem, 10vw, 6rem);
-  font-weight: 200;
-  letter-spacing: 0.15em;
-  color: var(--color-green);
-  text-shadow: 0 0 30px rgba(0, 164, 67, 0.4), 0 0 60px rgba(0, 164, 67, 0.15);
-  opacity: 0;
-  transition: font-size 0.6s ease, font-weight 0.6s ease, letter-spacing 0.6s ease, text-shadow 0.6s ease;
+.loader-name-line--ferraro {
+  animation: nameSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
 }
 
-.loader-initial--j {
-  animation: initialLetterIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
-}
-
-.loader-initial--f {
-  animation: initialLetterIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
-}
-
-@keyframes initialsReveal {
-  to { opacity: 1; }
-}
-
-@keyframes initialLetterIn {
+@keyframes nameSlideIn {
   0% {
     opacity: 0;
-    transform: scale(0.3) translateY(20px);
-    text-shadow: 0 0 0 rgba(0, 164, 67, 0);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.1) translateY(-5px);
-    text-shadow: 0 0 40px rgba(0, 164, 67, 0.6), 0 0 80px rgba(0, 164, 67, 0.3);
+    transform: translateX(-40px);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
-    text-shadow: 0 0 30px rgba(0, 164, 67, 0.4), 0 0 60px rgba(0, 164, 67, 0.15);
+    transform: translateX(0);
   }
-}
-
-/* ── Transition: initials shrink to name size ────────────────── */
-
-.loader-word {
-  display: inline-flex;
-  align-items: baseline;
-}
-
-.loader-initials--expand .loader-initial {
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  color: var(--color-green);
-  text-shadow: 0 0 20px rgba(0, 164, 67, 0.3), 0 0 40px rgba(0, 164, 67, 0.1);
-  transition: font-size 0.6s ease, font-weight 0.6s ease, letter-spacing 0.6s ease, text-shadow 0.6s ease;
-}
-
-.loader-rest {
-  display: inline;
-  color: var(--color-text);
-  letter-spacing: 0.22em;
-}
-
-/* After typing completes, unify initials color to match the rest of the name */
-.loader-initials--unified .loader-initial {
-  color: var(--color-text);
-  text-shadow: none;
-  transition: color 0.6s ease, text-shadow 0.6s ease;
-}
-
-/* Blinking cursor on the last word being typed */
-.loader-initials--typing .loader-word:last-child::after {
-  content: '|';
-  color: var(--color-green);
-  animation: cursorBlink 0.8s step-end infinite;
-  margin-left: 2px;
-}
-
-@keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
 }
 
 /* ── Tagline ─────────────────────────────────────────────────── */
