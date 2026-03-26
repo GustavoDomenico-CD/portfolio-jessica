@@ -8,17 +8,7 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        passes: 2,
-      },
-      format: {
-        comments: false,
-      },
-    },
+    minify: 'esbuild',
     rollupOptions: {
       input: 'index.html',
       output: {
