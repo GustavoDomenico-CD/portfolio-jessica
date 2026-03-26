@@ -2,35 +2,12 @@
 
 const TOTAL_DURATION = 15000;
 
-function loaderTypeWriter(el: HTMLElement, text: string, duration: number): Promise<void> {
-  return new Promise((resolve) => {
-    el.textContent = '';
-    const charDelay = duration / text.length;
-    let i = 0;
-
-    const tick = (): void => {
-      if (i < text.length) {
-        el.textContent += text[i];
-        i++;
-        setTimeout(tick, charDelay);
-      } else {
-        resolve();
-      }
-    };
-
-    tick();
-  });
-}
-
 export function setupLoadingScreen(): Promise<void> {
   return new Promise((resolve) => {
     const loader = document.getElementById('loading-screen');
     if (!loader) { resolve(); return; }
 
     const fill        = loader.querySelector<HTMLElement>('.loader-bar-fill');
-    const initialsEl  = loader.querySelector<HTMLElement>('.loader-initials');
-    const restJ       = loader.querySelector<HTMLElement>('.loader-rest--j');
-    const restF       = loader.querySelector<HTMLElement>('.loader-rest--f');
     const taglineEl   = loader.querySelector<HTMLElement>('.loader-tagline');
     const percentEl   = loader.querySelector<HTMLElement>('.loader-percent');
     const dotsEl      = loader.querySelector<HTMLElement>('.loader-dots');
@@ -52,28 +29,7 @@ export function setupLoadingScreen(): Promise<void> {
     };
     requestAnimationFrame(progressRAF);
 
-    // Phase 1: Show initials "J" and "F" with dramatic entrance (0ms)
-    // Initials are already in HTML, CSS handles the entrance animation
-
-    // Phase 2: After initials are shown, shrink them and type remaining letters (1800ms)
-    setTimeout(() => {
-      if (initialsEl) {
-        initialsEl.classList.add('loader-initials--expand');
-        initialsEl.classList.add('loader-initials--typing');
-      }
-      // After shrink transition, type the remaining letters
-      setTimeout(async () => {
-        // Type both words simultaneously
-        const typeJ = restJ ? loaderTypeWriter(restJ, 'ESSICA', 800) : Promise.resolve();
-        const typeF = restF ? loaderTypeWriter(restF, 'ERRARO', 800) : Promise.resolve();
-        await Promise.all([typeJ, typeF]);
-        if (initialsEl) {
-          initialsEl.classList.remove('loader-initials--typing');
-          // Unify color: transition initials from green to standard text color
-          initialsEl.classList.add('loader-initials--unified');
-        }
-      }, 600);
-    }, 1800);
+    // Name slide-in animation is handled purely by CSS
 
     setTimeout(() => {
       if (taglineEl) taglineEl.classList.add('loader-tagline--visible');
