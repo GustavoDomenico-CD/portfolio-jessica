@@ -141,3 +141,60 @@
 .project-tech span:hover {
   background-color: rgba(255, 156, 26, 0.16);
 }
+
+/* ── Photo Carousel ─────────────────────────────────────────── */
+
+.project-photos {
+  margin-bottom: var(--space-5);
+  position: relative;
+}
+
+.project-photo-carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.project-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-photo.active {
+  opacity: 1;
+}
+
+.project-photo-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.photo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 156, 26, 0.4);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.photo-dot.active {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.photo-dot:hover {
+  border-color: var(--color-orange);
+}

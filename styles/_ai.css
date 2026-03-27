@@ -1,23 +1,5 @@
 /* styles/_ai.css — Seção Propósito & Valores */
 
-/* ── 3D Orb Canvas ──────────────────────────────────────────── */
-
-.ai-orb-wrap {
-  width: 100%;
-  margin: 0 auto var(--space-6);
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  mask-image: radial-gradient(ellipse 80% 90% at center, black 60%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 90% at center, black 60%, transparent 100%);
-}
-
-#ai-orb-canvas {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 /* ── Mission Quote ─────────────────────────────────────────── */
 
 .ai-mission {
@@ -205,15 +187,6 @@
 
 .card-body-inner {
   overflow: hidden;
-}
-
-/* ── Canvas inside card ────────────────────────────────────── */
-
-.card-canvas {
-  display: block;
-  width: 100%;
-  height: 150px;
-  margin-top: var(--space-5);
 }
 
 /* ── Card text ─────────────────────────────────────────────── */

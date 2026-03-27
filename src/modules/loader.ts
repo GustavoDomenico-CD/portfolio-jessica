@@ -2,36 +2,15 @@
 
 const TOTAL_DURATION = 15000;
 
-function loaderTypeWriter(el: HTMLElement, text: string, duration: number): Promise<void> {
-  return new Promise((resolve) => {
-    el.textContent = '';
-    const charDelay = duration / text.length;
-    let i = 0;
-
-    const tick = (): void => {
-      if (i < text.length) {
-        el.textContent += text[i];
-        i++;
-        setTimeout(tick, charDelay);
-      } else {
-        resolve();
-      }
-    };
-
-    tick();
-  });
-}
-
 export function setupLoadingScreen(): Promise<void> {
   return new Promise((resolve) => {
     const loader = document.getElementById('loading-screen');
     if (!loader) { resolve(); return; }
 
-    const fill      = loader.querySelector<HTMLElement>('.loader-bar-fill');
-    const nameEl    = loader.querySelector<HTMLElement>('.loader-name');
-    const taglineEl = loader.querySelector<HTMLElement>('.loader-tagline');
-    const percentEl = loader.querySelector<HTMLElement>('.loader-percent');
-    const dotsEl    = loader.querySelector<HTMLElement>('.loader-dots');
+    const fill        = loader.querySelector<HTMLElement>('.loader-bar-fill');
+    const taglineEl   = loader.querySelector<HTMLElement>('.loader-tagline');
+    const percentEl   = loader.querySelector<HTMLElement>('.loader-percent');
+    const dotsEl      = loader.querySelector<HTMLElement>('.loader-dots');
 
     const start = performance.now();
 
@@ -50,13 +29,15 @@ export function setupLoadingScreen(): Promise<void> {
     };
     requestAnimationFrame(progressRAF);
 
+    // Initials appear at 0.5s (CSS animation), full name reveals at 2s
+    const nameEl = loader.querySelector<HTMLElement>('.loader-name');
     setTimeout(() => {
-      if (nameEl) loaderTypeWriter(nameEl, 'JESSICA FERRARO', 2800);
-    }, 800);
+      if (nameEl) nameEl.classList.add('name-revealed');
+    }, 2000);
 
     setTimeout(() => {
       if (taglineEl) taglineEl.classList.add('loader-tagline--visible');
-    }, 4000);
+    }, 5000);
 
     const phases = [
       'Inicializando...',

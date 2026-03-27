@@ -29,6 +29,66 @@
   line-height: var(--lh-tight);
   min-height: 1.2em;
   margin-bottom: var(--space-3);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.typing-title.name-revealed {
+  flex-direction: column;
+  gap: 0.05em;
+}
+
+/* Each name on its own line */
+.name-line {
+  display: block;
+}
+
+/* Initials: appear first in green */
+.name-initial {
+  display: inline-block;
+  color: var(--color-green);
+  opacity: 0;
+  transition: color 0.8s ease;
+}
+
+.name-initial.visible {
+  opacity: 1;
+  animation: heroInitialIn 0.6s ease-out forwards;
+}
+
+/* When full name reveals, initials transition to standard color */
+.typing-title.name-revealed .name-initial {
+  color: var(--color-text);
+}
+
+/* Rest of letters: hidden until reveal */
+.name-rest {
+  display: inline-block;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  vertical-align: bottom;
+  transition: max-width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.6s ease;
+}
+
+.typing-title.name-revealed .name-rest {
+  opacity: 1;
+  max-width: 12ch;
+}
+
+@keyframes heroInitialIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .profession {
@@ -100,3 +160,4 @@ img.loaded {
   0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+

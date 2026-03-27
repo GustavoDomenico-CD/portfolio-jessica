@@ -1,71 +1,5 @@
 /* styles/_interactions.css */
 
-/* ── Card glare (injected by tilt.ts) ────────────────────────── */
-
-.project-card,
-.skill-item {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition:
-    transform 0.15s ease,
-    border-color var(--transition-base),
-    box-shadow var(--transition-base);
-}
-
-.project-card:not(:hover),
-.skill-item:not(:hover) {
-  transition:
-    transform 0.5s cubic-bezier(0.22,1,0.36,1),
-    border-color var(--transition-base),
-    box-shadow var(--transition-base);
-}
-
-.card-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 1;
-  transition: background 0.2s ease;
-}
-
-/* ── Skill bars ───────────────────────────────────────────────── */
-
-.skill-item[data-level] {
-  padding-bottom: calc(var(--space-6) + 18px);
-}
-
-.skill-bar {
-  position: absolute;
-  bottom: var(--space-4);
-  left: var(--space-4);
-  right: var(--space-4);
-  height: 3px;
-  background-color: rgba(0, 164, 67, 0.12);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.skill-bar-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--color-green), var(--color-green-hover));
-  border-radius: var(--radius-full);
-  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 0 6px rgba(0, 164, 67, 0.4);
-}
-
-.skill-level-label {
-  position: absolute;
-  bottom: calc(var(--space-4) + 8px);
-  right: var(--space-4);
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--color-green);
-  letter-spacing: 0.05em;
-  opacity: 0.7;
-}
-
 /* ── Stats row (Sobre section) ────────────────────────────────── */
 
 .stats-row {
@@ -175,4 +109,47 @@
 
 .contact-item:hover::before {
   opacity: 1;
+}
+
+/* ── Sobre layout ─────────────────────────────────────────────── */
+
+.sobre-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-7);
+  max-width: 900px;
+  margin: 0 auto var(--space-4);
+}
+
+.sobre-text {
+  flex: 1;
+}
+
+.sobre-text p {
+  text-align: left;
+}
+
+.sobre-photo {
+  flex: 0 0 260px;
+}
+
+.sobre-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 1px solid rgba(0, 164, 67, 0.12);
+}
+
+@media (max-width: 768px) {
+  .sobre-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sobre-photo {
+    flex: 0 0 auto;
+    max-width: 220px;
+    order: -1;
+  }
 }

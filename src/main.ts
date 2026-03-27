@@ -1,10 +1,8 @@
 import { setupLoadingScreen } from './modules/loader';
-import { setupParticles } from './modules/particles';
 import { setupCustomCursor } from './modules/cursor';
 import { setupScrollProgress, setupStaggeredReveals } from './modules/scrollEffects';
-import { setupTiltEffect, setupMagneticButtons } from './modules/tilt';
-import { setupSkillBars, setupCounters } from './modules/counters';
-import { setupGlitchEffect } from './modules/glitch';
+import { setupMagneticButtons } from './modules/tilt';
+import { setupCounters } from './modules/counters';
 import { initTypeWriter } from './modules/typewriter';
 import { lazyLoadImages, setupProjectMediaIntersection } from './modules/observer';
 import {
@@ -24,13 +22,31 @@ import {
   setupProjectFilter,
 } from './modules/ui';
 import { registerServiceWorker } from './modules/serviceWorker';
-import { setupAIOrb } from './modules/aiOrb';
-import { setupCardAnimations } from './modules/cardAnimations';
+
+function setupPhotoCarousels(): void {
+  const carousels = document.querySelectorAll<HTMLElement>('.project-photos');
+
+  carousels.forEach((container) => {
+    const photos = container.querySelectorAll<HTMLElement>('.project-photo');
+    const dots = container.querySelectorAll<HTMLElement>('.photo-dot');
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.dataset['index'] ?? '0', 10);
+
+        photos.forEach((photo) => photo.classList.remove('active'));
+        dots.forEach((d) => d.classList.remove('active'));
+
+        photos[index]?.classList.add('active');
+        dots[index]?.classList.add('active');
+      });
+    });
+  });
+}
 
 async function boot(): Promise<void> {
   await setupLoadingScreen();
 
-  setupParticles();
   setupCustomCursor();
 
   setupScrollProgress();
@@ -44,13 +60,10 @@ async function boot(): Promise<void> {
   setupStaggeredReveals();
   lazyLoadImages();
   setupProjectMediaIntersection();
-  setupTiltEffect();
   setupMagneticButtons();
-  setupSkillBars();
   setupCounters();
 
   initTypeWriter();
-  setupGlitchEffect();
 
   setupVideoLazyLoading();
   setupMediaHoverEffects();
@@ -60,8 +73,7 @@ async function boot(): Promise<void> {
   setupCertificationToggles();
   setupProjectFilter();
   setupOfflineBanner();
-  setupAIOrb();
-  setupCardAnimations();
+  setupPhotoCarousels();
 
   registerServiceWorker();
 }
