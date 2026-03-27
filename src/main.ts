@@ -23,6 +23,7 @@ import {
   setupProjectFilter,
 } from './modules/ui';
 import { registerServiceWorker } from './modules/serviceWorker';
+import { setupCardAnimations } from './modules/cardAnimations';
 
 function setupPhotoCarousels(): void {
   const carousels = document.querySelectorAll<HTMLElement>('.project-photos');
@@ -76,6 +77,7 @@ async function boot(): Promise<void> {
   setupOfflineBanner();
   setupPhotoCarousels();
   setupTimelineToggles();
+  setupCardAnimations();
 
   registerServiceWorker();
 }

@@ -1,19 +1,120 @@
-/* styles/_softwares.css — Formação Acadêmica */
+/* styles/_softwares.css — Formação Acadêmica — Alternating Timeline */
 
-.softwares-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-6);
-  max-width: 1000px;
-  margin: 0 auto;
+/* ── Formation Timeline Container ─────────────────────────── */
+
+.formation-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: var(--space-7) auto 0;
+  padding: var(--space-5) 0;
 }
 
-/* ── Card ─────────────────────────────────────────────────── */
+/* Central vertical line */
+.formation-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-blue) 10%,
+    var(--color-blue) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
 
-.software-card {
-  background-color: #fff;
+/* ── Timeline Item ────────────────────────────────────────── */
+
+.formation-timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 0 var(--space-7);
+  margin-bottom: var(--space-7);
+}
+
+.formation-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Left-aligned items */
+.formation-left {
+  left: 0;
+  text-align: right;
+}
+
+/* Right-aligned items */
+.formation-right {
+  left: 50%;
+  text-align: left;
+}
+
+/* ── Center Dot ───────────────────────────────────────────── */
+
+.formation-timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  width: 16px;
+  height: 16px;
+  background: var(--color-bg);
+  border: 3px solid var(--color-blue);
+  border-radius: 50%;
+  z-index: 2;
+  transition: all var(--transition-base);
+}
+
+.formation-left::before {
+  right: -9px;
+}
+
+.formation-right::before {
+  left: -9px;
+}
+
+/* Connector line from dot to card */
+.formation-timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 31px;
+  width: var(--space-7);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 169, 255, 0.4),
+    rgba(13, 169, 255, 0.15)
+  );
+  z-index: 1;
+}
+
+.formation-left::after {
+  right: 7px;
+  background: linear-gradient(
+    90deg,
+    rgba(13, 169, 255, 0.15),
+    rgba(13, 169, 255, 0.4)
+  );
+}
+
+.formation-right::after {
+  left: 7px;
+}
+
+/* Hover: fill the dot */
+.formation-timeline-item:hover::before {
+  background: var(--color-blue);
+  box-shadow: 0 0 0 6px rgba(13, 169, 255, 0.15);
+  transform: scale(1.15);
+}
+
+/* ── Timeline Content Card ────────────────────────────────── */
+
+.formation-timeline-content {
+  background: #fff;
   border: 1px solid rgba(13, 169, 255, 0.12);
-  border-top: 3px solid var(--color-blue);
   border-radius: var(--radius-md);
   padding: var(--space-6);
   position: relative;
@@ -24,7 +125,8 @@
     box-shadow var(--transition-base);
 }
 
-.software-card::before {
+/* Shimmer effect on hover */
+.formation-timeline-content::before {
   content: '';
   position: absolute;
   top: 0;
@@ -41,68 +143,97 @@
   pointer-events: none;
 }
 
-.software-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(13, 169, 255, 0.30);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(13, 169, 255, 0.08);
+.formation-timeline-item:hover .formation-timeline-content {
+  border-color: rgba(13, 169, 255, 0.35);
+  box-shadow: 0 12px 32px rgba(13, 169, 255, 0.1);
+  transform: translateY(-4px);
 }
 
-.software-card:hover::before {
+.formation-timeline-item:hover .formation-timeline-content::before {
   left: 130%;
+}
+
+/* ── Status Badge ─────────────────────────────────────────── */
+
+.formation-status {
+  display: inline-block;
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.formation-status.status-active {
+  background: rgba(0, 164, 67, 0.1);
+  color: var(--color-green);
+  border: 1px solid rgba(0, 164, 67, 0.25);
 }
 
 /* ── Icon ─────────────────────────────────────────────────── */
 
-.software-icon {
+.formation-icon {
   width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background-color: rgba(13, 169, 255, 0.10);
+  background: rgba(13, 169, 255, 0.1);
   border: 1px solid rgba(13, 169, 255, 0.18);
   margin-bottom: var(--space-4);
-  font-size: 1.25rem;
-  color: var(--color-blue);
   transition: background-color var(--transition-fast);
 }
 
-.software-card:hover .software-icon {
-  background-color: rgba(13, 169, 255, 0.18);
+.formation-left .formation-icon {
+  margin-left: auto;
 }
 
-/* ── Title ────────────────────────────────────────────────── */
+.formation-icon i {
+  font-size: 1.25rem;
+  color: var(--color-blue);
+}
 
-.software-card h3 {
+.formation-timeline-item:hover .formation-icon {
+  background: rgba(13, 169, 255, 0.18);
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+
+.formation-timeline-content h3 {
   font-family: var(--font-display);
   font-size: var(--fs-xl);
   font-weight: 400;
   color: var(--color-text);
   margin-bottom: var(--space-2);
+  letter-spacing: 0.01em;
   position: relative;
   display: inline-block;
-  letter-spacing: 0.01em;
 }
 
-.software-card h3::after {
+.formation-timeline-content h3::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -3px;
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-blue);
+  background: var(--color-blue);
   transition: width var(--transition-base);
 }
 
-.software-card:hover h3::after {
+.formation-left .formation-timeline-content h3::after {
+  left: auto;
+  right: 0;
+}
+
+.formation-timeline-item:hover .formation-timeline-content h3::after {
   width: 100%;
 }
 
-/* ── Institution ──────────────────────────────────────────── */
-
-.software-institution {
+.formation-institution {
   font-size: var(--fs-sm);
   color: var(--color-blue);
   font-weight: 500;
@@ -110,35 +241,34 @@
   letter-spacing: 0.02em;
 }
 
-/* ── Year ─────────────────────────────────────────────────── */
-
-.software-year {
+.formation-year {
   font-size: var(--fs-xs);
   color: var(--color-text-dim);
   letter-spacing: 0.05em;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
-/* ── Body ─────────────────────────────────────────────────── */
-
-.software-card p {
-  text-align: left;
-  margin: 0 0 var(--space-4);
+.formation-timeline-content p {
   font-size: var(--fs-sm);
   color: var(--color-text-muted);
   line-height: var(--lh-loose);
+  margin: 0 0 var(--space-4);
 }
 
-/* ── Tech Tags (status badge) ─────────────────────────────── */
+/* ── Tags ─────────────────────────────────────────────────── */
 
-.software-tech {
+.formation-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
 
-.software-tech span {
-  background-color: rgba(13, 169, 255, 0.08);
+.formation-left .formation-tags {
+  justify-content: flex-end;
+}
+
+.formation-tags span {
+  background: rgba(13, 169, 255, 0.08);
   color: var(--color-blue);
   border: 1px solid rgba(13, 169, 255, 0.18);
   padding: 3px var(--space-3);
@@ -148,8 +278,33 @@
   letter-spacing: 0.03em;
 }
 
-.software-tech span.status-cursando {
-  background-color: rgba(0, 164, 67, 0.08);
-  color: var(--color-green);
-  border-color: rgba(0, 164, 67, 0.18);
+/* ── Staggered Reveal Animation ───────────────────────────── */
+
+.formation-left .formation-timeline-content {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.formation-right .formation-timeline-content {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.formation-timeline-item.revealed .formation-timeline-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.formation-timeline-item.revealed:hover .formation-timeline-content {
+  transform: translateY(-4px);
 }

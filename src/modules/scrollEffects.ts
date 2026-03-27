@@ -28,8 +28,8 @@ export function setupStaggeredReveals(): void {
   const groups: { selector: string; dir: RevealDirection; stagger: number }[] = [
     { selector: '.skill-item',         dir: 'up',    stagger: 80  },
     { selector: '.project-card',       dir: 'up',    stagger: 120 },
-    { selector: '.software-card',      dir: 'up',    stagger: 120 },
-    { selector: '.contact-item',       dir: 'up',    stagger: 100 },
+    { selector: '.specialty-item',     dir: 'up',    stagger: 100 },
+    { selector: '.contact-card',       dir: 'up',    stagger: 100 },
     { selector: '.certification-card', dir: 'fade',  stagger: 90  },
     { selector: '.section',            dir: 'up',    stagger: 0   },
   ];

@@ -113,9 +113,75 @@
     padding: var(--space-5) var(--space-5);
   }
 
-  .contact-grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 420px;
+  .contact-cards {
+    max-width: 100%;
+  }
+
+  /* Purpose timeline: single column on mobile */
+  .purpose-timeline::before {
+    left: 11px;
+  }
+
+  .purpose-timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 40px;
+    padding-right: 0;
+    text-align: left !important;
+  }
+
+  .purpose-timeline-item::before {
+    left: 3px !important;
+    right: auto !important;
+  }
+
+  .purpose-timeline-item::after {
+    left: 19px !important;
+    right: auto !important;
+    width: 21px !important;
+    background: linear-gradient(90deg, rgba(0, 164, 67, 0.4), rgba(0, 164, 67, 0.15)) !important;
+  }
+
+  .purpose-left .purpose-icon {
+    margin-left: 0;
+  }
+
+  /* Formation timeline: single column on mobile */
+  .formation-timeline::before {
+    left: 11px;
+  }
+
+  .formation-timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 40px;
+    padding-right: 0;
+    text-align: left !important;
+  }
+
+  .formation-timeline-item::before {
+    left: 3px !important;
+    right: auto !important;
+  }
+
+  .formation-timeline-item::after {
+    left: 19px !important;
+    right: auto !important;
+    width: 21px !important;
+    background: linear-gradient(90deg, rgba(13, 169, 255, 0.4), rgba(13, 169, 255, 0.15)) !important;
+  }
+
+  .formation-left .formation-icon {
+    margin-left: 0;
+  }
+
+  .formation-left .formation-tags {
+    justify-content: flex-start;
+  }
+
+  .formation-left .formation-timeline-content h3::after {
+    left: 0;
+    right: auto;
   }
 
   .side-nav {
@@ -203,19 +269,22 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
-  }
-
   .projects-grid,
-  .softwares-grid,
   .certifications-grid {
     grid-template-columns: 1fr;
   }
 
-  .project-card,
-  .software-card {
+  .project-card {
+    padding: var(--space-5);
+  }
+
+  .purpose-timeline-item,
+  .formation-timeline-item {
+    margin-bottom: var(--space-5);
+  }
+
+  .purpose-timeline-content,
+  .formation-timeline-content {
     padding: var(--space-5);
   }
 

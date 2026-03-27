@@ -1,4 +1,4 @@
-/* styles/_contact.css */
+/* styles/_contact.css — Contact Section — Immersive Cards */
 
 .contact-section {
   text-align: center;
@@ -13,84 +13,182 @@
   font-weight: 300;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: var(--space-5);
-  max-width: 500px;
+/* ── Contact Cards Container ──────────────────────────────── */
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 520px;
   margin: 0 auto;
 }
 
-/* ── Contact Item ─────────────────────────────────────────── */
+/* ── Contact Card ─────────────────────────────────────────── */
 
-.contact-item {
+.contact-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-5);
   text-decoration: none;
-  color: var(--color-text-muted);
-  padding: var(--space-5);
+  padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  opacity: 0;
-  transform: translateY(16px);
+  background: #fff;
+  position: relative;
+  overflow: hidden;
   transition:
-    opacity var(--transition-slow),
-    transform var(--transition-slow),
+    transform var(--transition-spring),
     border-color var(--transition-base),
-    color var(--transition-base),
-    background-color var(--transition-base);
+    box-shadow var(--transition-base);
 }
 
-.contact-item.visible {
+/* Gradient background on hover */
+.contact-card-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card:hover .contact-card-bg {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.contact-item:hover,
-.contact-item:focus-visible {
+/* ── Per-channel theming ──────────────────────────────────── */
+
+/* LinkedIn */
+.contact-card--linkedin .contact-card-bg {
+  background: linear-gradient(135deg, rgba(0, 119, 181, 0.06) 0%, rgba(0, 119, 181, 0.02) 100%);
+}
+.contact-card--linkedin:hover {
+  border-color: rgba(0, 119, 181, 0.35);
+}
+.contact-card--linkedin .contact-card-icon {
+  background: rgba(0, 119, 181, 0.08);
+  border-color: rgba(0, 119, 181, 0.2);
+  color: #0077B5;
+}
+.contact-card--linkedin:hover .contact-card-icon {
+  background: #0077B5;
+  color: #fff;
+}
+
+/* Email */
+.contact-card--email .contact-card-bg {
+  background: linear-gradient(135deg, rgba(0, 164, 67, 0.06) 0%, rgba(0, 164, 67, 0.02) 100%);
+}
+.contact-card--email:hover {
+  border-color: rgba(0, 164, 67, 0.35);
+}
+.contact-card--email .contact-card-icon {
+  background: rgba(0, 164, 67, 0.08);
+  border-color: rgba(0, 164, 67, 0.2);
   color: var(--color-green);
-  border-color: var(--color-border-glow);
-  background-color: var(--color-green-dim);
+}
+.contact-card--email:hover .contact-card-icon {
+  background: var(--color-green);
+  color: #fff;
+}
+
+/* WhatsApp */
+.contact-card--whatsapp .contact-card-bg {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.06) 0%, rgba(37, 211, 102, 0.02) 100%);
+}
+.contact-card--whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.35);
+}
+.contact-card--whatsapp .contact-card-icon {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.2);
+  color: #25D366;
+}
+.contact-card--whatsapp:hover .contact-card-icon {
+  background: #25D366;
+  color: #fff;
 }
 
 /* ── Icon ─────────────────────────────────────────────────── */
 
-.contact-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: var(--radius-full);
+.contact-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: var(--color-green);
-  border: 1px solid rgba(0, 164, 67, 0.25);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  border: 1px solid;
   transition:
-    transform var(--transition-spring),
-    background-color var(--transition-base),
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform var(--transition-spring);
+}
+
+.contact-card:hover .contact-card-icon {
+  transform: scale(1.08);
+}
+
+/* ── Info ─────────────────────────────────────────────────── */
+
+.contact-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  text-align: left;
+}
+
+.contact-card-label {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.contact-card-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  letter-spacing: 0.03em;
+}
+
+/* ── Arrow ────────────────────────────────────────────────── */
+
+.contact-card-arrow {
+  font-size: var(--fs-sm);
+  color: var(--color-text-dim);
+  flex-shrink: 0;
+  transition:
+    transform var(--transition-base),
     color var(--transition-base);
 }
 
-.contact-item:hover .contact-icon,
-.contact-item:focus-visible .contact-icon {
-  background-color: var(--color-green);
-  color: #fff;
-  transform: translateY(-4px) rotate(6deg);
+.contact-card:hover .contact-card-arrow {
+  transform: translateX(4px);
+  color: var(--color-text);
 }
 
-/* ── Label ────────────────────────────────────────────────── */
+/* ── Responsive ───────────────────────────────────────────── */
 
-.contact-label {
-  font-size: var(--fs-xs);
-  font-weight: 500;
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  transition: color var(--transition-base);
-}
+@media (max-width: 576px) {
+  .contact-cards {
+    gap: var(--space-3);
+  }
 
-.contact-item:hover .contact-label,
-.contact-item:focus-visible .contact-label {
-  color: var(--color-green);
+  .contact-card {
+    padding: var(--space-4) var(--space-5);
+    gap: var(--space-4);
+  }
+
+  .contact-card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
 }
