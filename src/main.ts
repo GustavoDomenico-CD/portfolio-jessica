@@ -12,6 +12,7 @@ import {
   setupHeaderScrollEffect,
   setupScrollActiveLink,
   setupResizeHandler,
+  setupTimelineToggles,
 } from './modules/navigation';
 import { setupVideoLazyLoading, setupMediaHoverEffects } from './modules/media';
 import {
@@ -74,6 +75,7 @@ async function boot(): Promise<void> {
   setupProjectFilter();
   setupOfflineBanner();
   setupPhotoCarousels();
+  setupTimelineToggles();
 
   registerServiceWorker();
 }

@@ -121,6 +121,26 @@
   .side-nav {
     display: none;
   }
+
+  .timeline-summary {
+    gap: 1px;
+  }
+
+  .timeline-role {
+    font-size: var(--fs-base);
+  }
+
+  .experience-timeline {
+    padding-left: 28px;
+  }
+
+  .timeline-marker {
+    left: -28px;
+  }
+
+  .experience-timeline::before {
+    left: 9px;
+  }
 }
 
 /* ── ≤ 576px ───────────────────────────────────────────────── */
@@ -156,6 +176,27 @@
   .section {
     padding: var(--space-5) var(--space-4);
     margin-bottom: var(--space-5);
+  }
+
+  .timeline-header {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .timeline-company {
+    font-size: var(--fs-xs);
+  }
+
+  .timeline-role {
+    font-size: var(--fs-sm);
+  }
+
+  .timeline-period {
+    font-size: 0.7rem;
+  }
+
+  .timeline-heading {
+    font-size: var(--fs-lg);
+    margin-top: var(--space-6);
   }
 
   .skills-grid {

@@ -1,60 +1,65 @@
-// ─── Active Nav Link ──────────────────────────────────────────────────────────
+// ─── Tab Navigation ──────────────────────────────────────────────────────────
 
-export function setActiveNavLink(id: string | null = null): void {
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>(
-    '.nav-link, .footer-link, .side-nav-link'
-  );
+function getTabName(href: string): string {
+  if (!href || href === '#') return 'home';
+  return href.replace('#', '');
+}
 
-  if (id) {
-    navLinks.forEach((link) => {
-      link.classList.toggle('active', link.getAttribute('href') === id);
-    });
-    return;
-  }
+export function switchTab(tabName: string): void {
+  const panels = document.querySelectorAll<HTMLElement>('.tab-panel');
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-tab]');
 
-  const sections = document.querySelectorAll<HTMLElement>('.section');
-  const scrollPosition = window.scrollY + 100;
-  let currentSection = '';
-
-  sections.forEach((section) => {
-    if (
-      scrollPosition >= section.offsetTop &&
-      scrollPosition < section.offsetTop + section.offsetHeight
-    ) {
-      currentSection = `#${section.getAttribute('id') ?? ''}`;
-    }
+  panels.forEach((panel) => {
+    panel.classList.toggle('active', panel.dataset['tabPanel'] === tabName);
   });
 
   navLinks.forEach((link) => {
-    link.classList.toggle('active', link.getAttribute('href') === currentSection);
+    link.classList.toggle('active', link.dataset['tab'] === tabName);
   });
+
+  // Update URL hash
+  const hash = tabName === 'home' ? '' : `#${tabName}`;
+  history.pushState(null, '', hash || window.location.pathname);
+
+  // Scroll to top of main content
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ─── Smooth Scrolling ─────────────────────────────────────────────────────────
+// ─── Active Nav Link ──────────────────────────────────────────────────────────
 
-function scrollToSection(targetId: string): void {
-  const targetEl = document.querySelector<HTMLElement>(targetId);
-  if (!targetEl) return;
+export function setActiveNavLink(id: string | null = null): void {
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-tab]');
 
-  const headerHeight = document.querySelector<HTMLElement>('.header')?.offsetHeight ?? 0;
-  window.scrollTo({ top: targetEl.offsetTop - headerHeight, behavior: 'smooth' });
-  history.pushState(null, '', targetId);
-  setActiveNavLink(targetId);
-
-  setTimeout(() => {
-    targetEl.setAttribute('tabindex', '-1');
-    targetEl.focus();
-    targetEl.removeAttribute('tabindex');
-  }, 800);
+  if (id) {
+    const tabName = getTabName(id);
+    navLinks.forEach((link) => {
+      link.classList.toggle('active', link.dataset['tab'] === tabName);
+    });
+  }
 }
+
+// ─── Smooth Scrolling / Tab Switching ─────────────────────────────────────────
 
 export function setupSmoothScrolling(): void {
-  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
+  document.querySelectorAll<HTMLAnchorElement>('[data-tab]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       e.preventDefault();
-      const href = anchor.getAttribute('href');
-      if (href) scrollToSection(href);
+      const tabName = anchor.dataset['tab'];
+      if (tabName) switchTab(tabName);
     });
+  });
+
+  // Handle initial hash on page load
+  const hash = window.location.hash;
+  if (hash) {
+    const tabName = getTabName(hash);
+    switchTab(tabName);
+  }
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', () => {
+    const tabName = getTabName(window.location.hash);
+    switchTab(tabName);
   });
 }
 
@@ -65,7 +70,10 @@ export function setupSideNav(): void {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const href = link.getAttribute('href');
-      if (href) scrollToSection(href);
+      if (href) {
+        const tabName = getTabName(href);
+        switchTab(tabName);
+      }
     });
   });
 }
@@ -127,28 +135,47 @@ export function setupHeaderScrollEffect(): void {
   }, { passive: true });
 }
 
-// ─── Scroll-based Active Link Update ─────────────────────────────────────────
+// ─── Scroll-based Active Link Update (no-op for tabs) ────────────────────────
 
 export function setupScrollActiveLink(): void {
-  let scrollTimer: ReturnType<typeof setTimeout>;
-
-  window.addEventListener('scroll', () => {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => setActiveNavLink(), 100);
-  }, { passive: true });
+  // No longer needed — tab navigation handles active state
 }
 
 // ─── Resize Handler ───────────────────────────────────────────────────────────
 
 export function setupResizeHandler(): void {
-  window.addEventListener('resize', () => {
-    const hash = window.location.hash;
-    if (!hash) return;
+  // No longer needed — tabs don't require scroll offset recalculation
+}
 
-    const targetEl = document.querySelector<HTMLElement>(hash);
-    if (!targetEl) return;
+// ─── Timeline Expandable Items ────────────────────────────────────────────────
 
-    const headerHeight = document.querySelector<HTMLElement>('.header')?.offsetHeight ?? 0;
-    window.scrollTo({ top: targetEl.offsetTop - headerHeight, behavior: 'auto' });
+export function setupTimelineToggles(): void {
+  const headers = document.querySelectorAll<HTMLElement>('.timeline-header');
+
+  headers.forEach((header) => {
+    header.addEventListener('click', () => {
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      const details = header.nextElementSibling as HTMLElement | null;
+
+      // Close all other open items
+      headers.forEach((other) => {
+        if (other !== header) {
+          other.setAttribute('aria-expanded', 'false');
+          (other.nextElementSibling as HTMLElement | null)?.classList.remove('open');
+        }
+      });
+
+      // Toggle current
+      header.setAttribute('aria-expanded', String(!isExpanded));
+      details?.classList.toggle('open', !isExpanded);
+    });
+
+    // Keyboard support
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        header.click();
+      }
+    });
   });
 }
