@@ -1,37 +1,24 @@
-import type { TypeWriterOptions } from '../types';
-
-function typeWriter(
-  element: HTMLElement,
-  text: string,
-  { speed = 100, onComplete = () => {} }: TypeWriterOptions = {}
-): void {
-  let i = 0;
-  element.textContent = '';
-
-  function typing(): void {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      setTimeout(typing, speed);
-    } else {
-      onComplete();
-    }
-  }
-
-  typing();
-}
+// ─── Hero Name Reveal (Initials → Full Name) ─────────────────────────────────
 
 export function initTypeWriter(): void {
   const titleEl = document.querySelector<HTMLElement>('.typing-title');
   if (!titleEl) return;
 
-  const text = titleEl.textContent ?? '';
+  const initials = titleEl.querySelectorAll<HTMLElement>('.name-initial');
+  const professionEl = document.querySelector<HTMLElement>('.profession');
 
-  typeWriter(titleEl, text, {
-    speed: 80,
-    onComplete: () => {
-      const professionEl = document.querySelector<HTMLElement>('.profession');
+  // Step 1: Show initials (with green color)
+  setTimeout(() => {
+    initials.forEach((el) => el.classList.add('visible'));
+  }, 200);
+
+  // Step 2: Reveal full names simultaneously
+  setTimeout(() => {
+    titleEl.classList.add('name-revealed');
+
+    // Step 3: Show profession after name reveal completes
+    setTimeout(() => {
       if (professionEl) professionEl.style.visibility = 'visible';
-    },
-  });
+    }, 900);
+  }, 1200);
 }
