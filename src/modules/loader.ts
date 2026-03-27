@@ -29,7 +29,11 @@ export function setupLoadingScreen(): Promise<void> {
     };
     requestAnimationFrame(progressRAF);
 
-    // Name slide-in animation is handled purely by CSS
+    // Initials appear at 0.5s (CSS animation), full name reveals at 2s
+    const nameEl = loader.querySelector<HTMLElement>('.loader-name');
+    setTimeout(() => {
+      if (nameEl) nameEl.classList.add('name-revealed');
+    }, 2000);
 
     setTimeout(() => {
       if (taglineEl) taglineEl.classList.add('loader-tagline--visible');
