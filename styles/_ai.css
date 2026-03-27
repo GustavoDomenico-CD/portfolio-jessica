@@ -1,4 +1,4 @@
-/* styles/_ai.css — Seção Propósito & Valores */
+/* styles/_ai.css — Seção Propósito & Valores — Alternating Timeline */
 
 /* ── Mission Quote ─────────────────────────────────────────── */
 
@@ -34,88 +34,190 @@
 .ai-mission::before { top: 0; }
 .ai-mission::after  { bottom: 0; }
 
-/* ── Ethics Grid ───────────────────────────────────────────── */
+/* ── Purpose Timeline Container ───────────────────────────── */
 
-.ai-ethics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-5);
+.purpose-timeline {
+  position: relative;
   max-width: 900px;
-  margin: var(--space-6) auto 0;
-  align-items: start;
+  margin: var(--space-7) auto 0;
+  padding: var(--space-5) 0;
 }
 
-/* ── Ethics Card ───────────────────────────────────────────── */
+/* Central vertical line */
+.purpose-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-green) 10%,
+    var(--color-green) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
 
-.ai-ethics-card {
-  text-align: center;
-  padding: var(--space-6) var(--space-5);
-  background-color: #fff;
-  border-radius: var(--radius-md);
+/* ── Timeline Item ────────────────────────────────────────── */
+
+.purpose-timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 0 var(--space-7);
+  margin-bottom: var(--space-7);
+}
+
+.purpose-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Left-aligned items */
+.purpose-left {
+  left: 0;
+  text-align: right;
+}
+
+/* Right-aligned items */
+.purpose-right {
+  left: 50%;
+  text-align: left;
+}
+
+/* ── Center Dot ───────────────────────────────────────────── */
+
+.purpose-timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  width: 16px;
+  height: 16px;
+  background: var(--color-bg);
+  border: 3px solid var(--color-green);
+  border-radius: 50%;
+  z-index: 2;
+  transition: all var(--transition-base);
+}
+
+.purpose-left::before {
+  right: -9px;
+}
+
+.purpose-right::before {
+  left: -9px;
+}
+
+/* Connector line from dot to card */
+.purpose-timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 31px;
+  width: var(--space-7);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 164, 67, 0.4),
+    rgba(0, 164, 67, 0.15)
+  );
+  z-index: 1;
+}
+
+.purpose-left::after {
+  right: 7px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 164, 67, 0.15),
+    rgba(0, 164, 67, 0.4)
+  );
+}
+
+.purpose-right::after {
+  left: 7px;
+}
+
+/* Hover: fill the dot */
+.purpose-timeline-item:hover::before {
+  background: var(--color-green);
+  box-shadow: 0 0 0 6px rgba(0, 164, 67, 0.15);
+  transform: scale(1.15);
+}
+
+/* ── Timeline Content Card ────────────────────────────────── */
+
+.purpose-timeline-content {
+  background: #fff;
   border: 1px solid rgba(0, 164, 67, 0.12);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  position: relative;
   transition:
     transform var(--transition-spring),
     border-color var(--transition-base),
     box-shadow var(--transition-base);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  user-select: none;
 }
 
-.ai-ethics-card:focus-visible {
-  outline: 2px solid rgba(0, 164, 67, 0.6);
-  outline-offset: 2px;
-}
-
-.ai-ethics-card::before {
+.purpose-timeline-content::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center top, rgba(0, 164, 67, 0.06), transparent 70%);
+  background: radial-gradient(ellipse at center top, rgba(0, 164, 67, 0.05), transparent 70%);
   opacity: 0;
   transition: opacity var(--transition-base);
   pointer-events: none;
+  border-radius: var(--radius-md);
 }
 
-.ai-ethics-card:hover,
-.ai-ethics-card.open {
+.purpose-timeline-item:hover .purpose-timeline-content {
   border-color: rgba(0, 164, 67, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 164, 67, 0.08);
-}
-
-.ai-ethics-card:hover:not(.open) {
+  box-shadow: 0 12px 32px rgba(0, 164, 67, 0.1);
   transform: translateY(-4px);
 }
 
-.ai-ethics-card:hover::before,
-.ai-ethics-card.open::before {
+.purpose-timeline-item:hover .purpose-timeline-content::before {
   opacity: 1;
 }
 
-/* ── Card Face (always visible) ────────────────────────────── */
+/* ── Icon ─────────────────────────────────────────────────── */
 
-.card-face {
+.purpose-icon {
+  width: 52px;
+  height: 52px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 164, 67, 0.08);
+  border: 2px solid rgba(0, 164, 67, 0.2);
+  margin-bottom: var(--space-4);
+  transition: all var(--transition-base);
 }
 
-.ai-ethics-card i {
-  font-size: 1.75rem;
+.purpose-left .purpose-icon {
+  margin-left: auto;
+}
+
+.purpose-icon i {
+  font-size: 1.35rem;
   color: var(--color-green);
-  margin-bottom: var(--space-4);
-  display: block;
   transition: transform var(--transition-spring);
 }
 
-.ai-ethics-card:hover i {
-  transform: scale(1.12);
+.purpose-timeline-item:hover .purpose-icon {
+  background: rgba(0, 164, 67, 0.15);
+  border-color: rgba(0, 164, 67, 0.4);
 }
 
-.ai-ethics-card h3 {
+.purpose-timeline-item:hover .purpose-icon i {
+  transform: scale(1.15);
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+
+.purpose-timeline-content h3 {
   font-family: var(--font-display);
-  font-size: var(--fs-lg);
+  font-size: var(--fs-xl);
   font-weight: 400;
   color: var(--color-text);
   margin-bottom: var(--space-3);
@@ -123,80 +225,40 @@
   text-transform: uppercase;
 }
 
-/* ── Toggle indicator ──────────────────────────────────────── */
-
-.card-toggle {
-  display: block;
-  width: 18px;
-  height: 18px;
-  border: 1px solid rgba(0, 164, 67, 0.45);
-  border-radius: 50%;
-  position: relative;
-  transition: transform 0.35s ease, border-color var(--transition-base);
-  flex-shrink: 0;
-  margin: 0 auto;
-}
-
-.card-toggle::before,
-.card-toggle::after {
-  content: '';
-  position: absolute;
-  background: var(--color-green);
-  border-radius: 1px;
-  transition: transform 0.35s ease, opacity 0.35s ease;
-}
-
-/* horizontal bar */
-.card-toggle::before {
-  width: 8px;
-  height: 1.5px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* vertical bar */
-.card-toggle::after {
-  width: 1.5px;
-  height: 8px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.ai-ethics-card.open .card-toggle::after {
-  transform: translate(-50%, -50%) rotate(90deg);
-  opacity: 0;
-}
-
-.ai-ethics-card.open .card-toggle {
-  border-color: rgba(0, 164, 67, 0.8);
-}
-
-/* ── Card Body (collapsed by default) ─────────────────────── */
-
-.card-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s ease;
-}
-
-.ai-ethics-card.open .card-body {
-  grid-template-rows: 1fr;
-}
-
-.card-body-inner {
-  overflow: hidden;
-}
-
-/* ── Card text ─────────────────────────────────────────────── */
-
-.ai-ethics-card p {
+.purpose-timeline-content p {
   font-size: var(--fs-sm);
   color: var(--color-text-muted);
-  line-height: var(--lh-base);
-  text-align: center;
-  margin: var(--space-4) 0 0;
-  max-width: none;
-  padding-bottom: var(--space-2);
+  line-height: var(--lh-loose);
+  margin: 0;
+}
+
+/* ── Staggered Reveal Animation ───────────────────────────── */
+
+.purpose-left .purpose-timeline-content {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.purpose-right .purpose-timeline-content {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.purpose-timeline-item.revealed .purpose-timeline-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.purpose-timeline-item.revealed:hover .purpose-timeline-content {
+  transform: translateY(-4px);
 }
