@@ -16,6 +16,7 @@
 @import './_nav.css';
 
 /* 4. Seções */
+@import './_tabs.css';
 @import './_hero.css';
 @import './_sections.css';
 @import './_ai.css';

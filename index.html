@@ -111,14 +111,13 @@
       </button>
 
       <nav class="nav-container" aria-label="Navegação principal">
-        <a href="#"               class="nav-link">Home</a>
-        <a href="#sobre"          class="nav-link">Sobre</a>
-        <a href="#proposito"      class="nav-link">Propósito</a>
-        <a href="#especialidades" class="nav-link">Especialidades</a>
-        <a href="#experiencia"    class="nav-link">Experiência</a>
-        <a href="#formacao"       class="nav-link">Formação</a>
-        <a href="#certificados"   class="nav-link">Certificados</a>
-        <a href="#contato"        class="nav-link">Contato</a>
+        <a href="#" class="nav-link" data-tab="home">Home</a>
+        <a href="#sobre" class="nav-link" data-tab="sobre">Sobre</a>
+        <a href="#proposito" class="nav-link" data-tab="proposito">Propósito</a>
+        <a href="#especialidades" class="nav-link" data-tab="especialidades">Especialidades</a>
+        <a href="#formacao" class="nav-link" data-tab="formacao">Formação</a>
+        <a href="#certificados" class="nav-link" data-tab="certificados">Certificados</a>
+        <a href="#contato" class="nav-link" data-tab="contato">Contato</a>
       </nav>
     </div>
   </header>
@@ -129,64 +128,253 @@
   <main class="main-content">
     <section class="profile-section">
 
-      <!-- ── Hero ──────────────────────────────────────────────────── -->
-      <div class="profile-header">
-        <h1 class="typing-title" aria-label="Jessica Ferraro">
-          <span class="name-line name-line--first">
-            <span class="name-initial">J</span><span class="name-rest">ESSICA</span>
-          </span>
-          <span class="name-line name-line--last">
-            <span class="name-initial">F</span><span class="name-rest">ERRARO</span>
-          </span>
-        </h1>
-        <p class="profession">Especialista &amp; Consultora em T&amp;D</p>
-        <p class="profession-sub">Salvador, Bahia &nbsp;·&nbsp; Neoenergia</p>
-        <picture>
-          <img src="https://placehold.co/440x440?text=Foto+Principal"
-               data-src="https://placehold.co/440x440?text=Foto+Principal"
-               alt="Foto de Jessica Ferraro"
-               class="profile-image lazy"
-               loading="lazy">
-        </picture>
+      <!-- ══ Tab: Home ══════════════════════════════════════════════ -->
+      <div class="tab-panel active" data-tab-panel="home">
+        <div class="profile-header">
+          <h1 class="typing-title" aria-label="Jessica Ferraro">
+            <span class="name-line name-line--first">
+              <span class="name-initial">J</span><span class="name-rest">ESSICA</span>
+            </span>
+            <span class="name-line name-line--last">
+              <span class="name-initial">F</span><span class="name-rest">ERRARO</span>
+            </span>
+          </h1>
+          <p class="profession">Especialista &amp; Consultora em T&amp;D</p>
+          <p class="profession-sub">Salvador, Bahia &nbsp;·&nbsp; Neoenergia</p>
+          <picture>
+            <img src="https://placehold.co/440x440?text=Foto+Principal"
+                 data-src="https://placehold.co/440x440?text=Foto+Principal"
+                 alt="Foto de Jessica Ferraro"
+                 class="profile-image lazy"
+                 loading="lazy">
+          </picture>
+        </div>
       </div>
 
-      <!-- ── Sobre ──────────────────────────────────────────────────── -->
-      <section id="sobre" class="section">
-        <h2>Sobre</h2>
-        <div class="sobre-content">
-          <div class="sobre-text">
-            <p>Profissional de RH com forte atuação em Treinamento e Desenvolvimento, especialista em transformar conhecimento em performance. Tenho experiência no desenho e implementação de programas de capacitação, onboarding, trilhas de aprendizagem e ações de engajamento que geram impacto real para as pessoas e para os resultados do negócio.</p>
-            <p>Minha jornada inclui atuação junto a times operacionais e comerciais, mapeamento de necessidades, desenvolvimento de conteúdos, acompanhamento de indicadores e mensuração de resultados. Trago uma escuta ativa, visão sistêmica e capacidade de articulação entre áreas — habilidades essenciais para projetos de aprendizagem corporativa eficazes e personalizados.</p>
-            <p>Atualmente, estou ampliando minha formação com uma pós-graduação em Engenharia de Segurança do Trabalho, com foco em liderança e gestão integrada de pessoas e processos, fortalecendo minha atuação em treinamentos técnicos, comportamentais e de conformidade.</p>
+      <!-- ══ Tab: Sobre ═══════════════════════════════════════════ -->
+      <div class="tab-panel" data-tab-panel="sobre">
+        <section id="sobre" class="section visible">
+          <h2>Sobre</h2>
+          <div class="sobre-content">
+            <div class="sobre-text">
+              <p>Profissional de RH com forte atuação em Treinamento e Desenvolvimento, especialista em transformar conhecimento em performance. Tenho experiência no desenho e implementação de programas de capacitação, onboarding, trilhas de aprendizagem e ações de engajamento que geram impacto real para as pessoas e para os resultados do negócio.</p>
+              <p>Minha jornada inclui atuação junto a times operacionais e comerciais, mapeamento de necessidades, desenvolvimento de conteúdos, acompanhamento de indicadores e mensuração de resultados. Trago uma escuta ativa, visão sistêmica e capacidade de articulação entre áreas — habilidades essenciais para projetos de aprendizagem corporativa eficazes e personalizados.</p>
+              <p>Atualmente, estou ampliando minha formação com uma pós-graduação em Engenharia de Segurança do Trabalho, com foco em liderança e gestão integrada de pessoas e processos, fortalecendo minha atuação em treinamentos técnicos, comportamentais e de conformidade.</p>
+            </div>
+            <div class="sobre-photo">
+              <img src="https://placehold.co/400x500?text=Foto+Jessica" alt="Foto de Jessica Ferraro" loading="lazy">
+            </div>
           </div>
-          <div class="sobre-photo">
-            <img src="https://placehold.co/400x500?text=Foto+Jessica" alt="Foto de Jessica Ferraro" loading="lazy">
-          </div>
-        </div>
 
-        <!-- Animated stats -->
-        <div class="stats-row">
-          <div class="stat-item">
-            <span class="stat-number" data-count="9">0</span><span class="stat-suffix">+</span>
-            <span class="stat-label">Anos de experiência</span>
+          <!-- Animated stats -->
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number" data-count="9">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Anos de experiência</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Empresas</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="11">0</span>
+              <span class="stat-label">Certificados</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="5">0</span>
+              <span class="stat-label">Áreas de atuação</span>
+            </div>
           </div>
-          <div class="stat-item">
-            <span class="stat-number" data-count="3">0</span>
-            <span class="stat-label">Empresas</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number" data-count="11">0</span>
-            <span class="stat-label">Certificados</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number" data-count="5">0</span>
-            <span class="stat-label">Áreas de atuação</span>
-          </div>
-        </div>
-      </section>
 
+          <!-- Experience Timeline -->
+          <h3 class="timeline-heading">Experiência Profissional</h3>
+          <div class="experience-timeline">
+
+            <!-- Neoenergia -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="timeline-dot current"></span>
+              </div>
+              <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="timeline-summary">
+                  <span class="timeline-company"><i class="fas fa-bolt"></i> Neoenergia</span>
+                  <span class="timeline-role">Especialista em Treinamento</span>
+                  <span class="timeline-period">Fev 2022 – Presente</span>
+                </div>
+                <span class="timeline-toggle" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="timeline-details">
+                <p>Gestão de recursos humanos e financeiros voltados ao desenvolvimento da companhia. Atuação estratégica com capacitação, comunicação interna e desenvolvimento de competências organizacionais. Desenho e implementação de programas de T&D alinhados aos objetivos de negócio.</p>
+                <div class="project-photos">
+                  <div class="project-photo-carousel">
+                    <img src="https://placehold.co/600x400?text=Neoenergia+Foto+1" alt="Jessica na Neoenergia - Foto 1" class="project-photo active" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=Neoenergia+Foto+2" alt="Jessica na Neoenergia - Foto 2" class="project-photo" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=Neoenergia+Foto+3" alt="Jessica na Neoenergia - Foto 3" class="project-photo" loading="lazy">
+                  </div>
+                  <div class="project-photo-dots">
+                    <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
+                    <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
+                    <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>Treinamento &amp; Desenvolvimento</span>
+                  <span>Gestão de Pessoas</span>
+                  <span>Comunicação Interna</span>
+                  <span>Indicadores de RH</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SENAI - Analista Comercial -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="timeline-dot"></span>
+              </div>
+              <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="timeline-summary">
+                  <span class="timeline-company"><i class="fas fa-industry"></i> SENAI Bahia</span>
+                  <span class="timeline-role">Analista Comercial III</span>
+                  <span class="timeline-period">Jun 2017 – Fev 2022</span>
+                </div>
+                <span class="timeline-toggle" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="timeline-details">
+                <p>Atuação em capacitação, comunicação e competências estratégicas para o desenvolvimento comercial. Coordenação de estratégias comerciais e educacionais integradas com supervisão de duas macro regiões da Bahia.</p>
+                <div class="project-photos">
+                  <div class="project-photo-carousel">
+                    <img src="https://placehold.co/600x400?text=SENAI+Comercial+Foto+1" alt="Jessica no SENAI - Foto 1" class="project-photo active" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=SENAI+Comercial+Foto+2" alt="Jessica no SENAI - Foto 2" class="project-photo" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=SENAI+Comercial+Foto+3" alt="Jessica no SENAI - Foto 3" class="project-photo" loading="lazy">
+                  </div>
+                  <div class="project-photo-dots">
+                    <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
+                    <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
+                    <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>Gestão Comercial</span>
+                  <span>Capacitação</span>
+                  <span>Estratégia Regional</span>
+                  <span>Desenvolvimento Estratégico</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SENAI - Coordenadora -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="timeline-dot"></span>
+              </div>
+              <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="timeline-summary">
+                  <span class="timeline-company"><i class="fas fa-industry"></i> SENAI Bahia</span>
+                  <span class="timeline-role">Coordenadora de Cursos</span>
+                  <span class="timeline-period">Out 2015 – Jun 2017</span>
+                </div>
+                <span class="timeline-toggle" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="timeline-details">
+                <p>Coordenação de cursos na região da Bahia. Gestão de equipes de instrutores, técnicos e estagiários. Planejamento orçamentário, controle de custos e acompanhamento pedagógico das turmas.</p>
+                <div class="project-photos">
+                  <div class="project-photo-carousel">
+                    <img src="https://placehold.co/600x400?text=SENAI+Coord+Foto+1" alt="Jessica como Coordenadora - Foto 1" class="project-photo active" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=SENAI+Coord+Foto+2" alt="Jessica como Coordenadora - Foto 2" class="project-photo" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=SENAI+Coord+Foto+3" alt="Jessica como Coordenadora - Foto 3" class="project-photo" loading="lazy">
+                  </div>
+                  <div class="project-photo-dots">
+                    <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
+                    <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
+                    <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>Gestão de Equipes</span>
+                  <span>Coordenação Pedagógica</span>
+                  <span>Planejamento Orçamentário</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SENAI CIMATEC - Professor -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="timeline-dot"></span>
+              </div>
+              <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="timeline-summary">
+                  <span class="timeline-company"><i class="fas fa-chalkboard"></i> SENAI CIMATEC</span>
+                  <span class="timeline-role">Professor para Nível Técnico</span>
+                  <span class="timeline-period">Jun 2013 – Out 2015</span>
+                </div>
+                <span class="timeline-toggle" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="timeline-details">
+                <p>Docência em nível técnico com foco em capacitação e comunicação. Desenvolvimento de conteúdos didáticos e metodologias de ensino adaptadas ao perfil dos alunos.</p>
+                <div class="project-photos">
+                  <div class="project-photo-carousel">
+                    <img src="https://placehold.co/600x400?text=CIMATEC+Foto+1" alt="Jessica no CIMATEC - Foto 1" class="project-photo active" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=CIMATEC+Foto+2" alt="Jessica no CIMATEC - Foto 2" class="project-photo" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=CIMATEC+Foto+3" alt="Jessica no CIMATEC - Foto 3" class="project-photo" loading="lazy">
+                  </div>
+                  <div class="project-photo-dots">
+                    <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
+                    <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
+                    <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>Docência</span>
+                  <span>Desenvolvimento de Conteúdo</span>
+                  <span>Nível Técnico</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- COELBA -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="timeline-dot"></span>
+              </div>
+              <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="timeline-summary">
+                  <span class="timeline-company"><i class="fas fa-plug"></i> COELBA</span>
+                  <span class="timeline-role">Estagiária</span>
+                  <span class="timeline-period">2011 – 2013</span>
+                </div>
+                <span class="timeline-toggle" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="timeline-details">
+                <p>Apoio em projetos de melhoria da rede de distribuição elétrica. Emissão de relatórios técnicos e diagnósticos de eficiência energética. Início da trajetória no setor elétrico e de energia.</p>
+                <div class="project-photos">
+                  <div class="project-photo-carousel">
+                    <img src="https://placehold.co/600x400?text=COELBA+Foto+1" alt="Jessica na COELBA - Foto 1" class="project-photo active" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=COELBA+Foto+2" alt="Jessica na COELBA - Foto 2" class="project-photo" loading="lazy">
+                    <img src="https://placehold.co/600x400?text=COELBA+Foto+3" alt="Jessica na COELBA - Foto 3" class="project-photo" loading="lazy">
+                  </div>
+                  <div class="project-photo-dots">
+                    <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
+                    <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
+                    <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>Rede Elétrica</span>
+                  <span>Relatórios Técnicos</span>
+                  <span>Diagnóstico de Eficiência</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <!-- ══ Tab: Propósito ═════════════════════════════════════════ -->
+      <div class="tab-panel" data-tab-panel="proposito">
       <!-- ── Propósito & Valores ────────────────────────────────────── -->
-      <section id="proposito" class="section">
+      <section id="proposito" class="section visible">
         <h2>Transformando Pessoas em Resultados</h2>
 
         <blockquote class="ai-mission">
@@ -251,9 +439,11 @@
 
         </div>
       </section>
+      </div>
 
-      <!-- ── Especialidades ─────────────────────────────────────────── -->
-      <section id="especialidades" class="section">
+      <!-- ══ Tab: Especialidades ════════════════════════════════════ -->
+      <div class="tab-panel" data-tab-panel="especialidades">
+      <section id="especialidades" class="section visible">
         <h2>Especialidades</h2>
         <div class="skills-layout">
           <div class="skills-photo">
@@ -316,144 +506,11 @@
           </div>
         </div>
       </section>
+      </div>
 
-      <!-- ── Experiência Profissional ───────────────────────────────── -->
-      <section id="experiencia" class="section">
-        <h2>Experiência Profissional</h2>
-        <div class="projects-grid">
-
-          <!-- Neoenergia -->
-          <div class="project-card">
-            <div class="project-company"><i class="fas fa-bolt"></i> Neoenergia</div>
-            <h3>Especialista em Treinamento</h3>
-            <p class="project-period"><i class="far fa-calendar-alt"></i> Fev 2022 – Presente · 4 anos e 3 meses · Tempo Integral</p>
-            <p>Gestão de recursos humanos e financeiros voltados ao desenvolvimento da companhia. Atuação estratégica com capacitação, comunicação interna e desenvolvimento de competências organizacionais. Desenho e implementação de programas de T&D alinhados aos objetivos de negócio.</p>
-            <div class="project-photos">
-              <div class="project-photo-carousel">
-                <img src="https://placehold.co/600x400?text=Neoenergia+Foto+1" alt="Jessica na Neoenergia - Foto 1" class="project-photo active" loading="lazy">
-                <img src="https://placehold.co/600x400?text=Neoenergia+Foto+2" alt="Jessica na Neoenergia - Foto 2" class="project-photo" loading="lazy">
-                <img src="https://placehold.co/600x400?text=Neoenergia+Foto+3" alt="Jessica na Neoenergia - Foto 3" class="project-photo" loading="lazy">
-              </div>
-              <div class="project-photo-dots">
-                <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
-                <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
-                <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
-              </div>
-            </div>
-            <div class="project-tech">
-              <span>Treinamento &amp; Desenvolvimento</span>
-              <span>Gestão de Pessoas</span>
-              <span>Comunicação Interna</span>
-              <span>Indicadores de RH</span>
-            </div>
-          </div>
-
-          <!-- SENAI - Analista Comercial -->
-          <div class="project-card">
-            <div class="project-company"><i class="fas fa-industry"></i> SENAI Bahia</div>
-            <h3>Analista Comercial III</h3>
-            <p class="project-period"><i class="far fa-calendar-alt"></i> Jun 2017 – Fev 2022 · 4 anos e 9 meses</p>
-            <p>Atuação em capacitação, comunicação e competências estratégicas para o desenvolvimento comercial. Coordenação de estratégias comerciais e educacionais integradas com supervisão de duas macro regiões da Bahia.</p>
-            <div class="project-photos">
-              <div class="project-photo-carousel">
-                <img src="https://placehold.co/600x400?text=SENAI+Comercial+Foto+1" alt="Jessica no SENAI - Foto 1" class="project-photo active" loading="lazy">
-                <img src="https://placehold.co/600x400?text=SENAI+Comercial+Foto+2" alt="Jessica no SENAI - Foto 2" class="project-photo" loading="lazy">
-                <img src="https://placehold.co/600x400?text=SENAI+Comercial+Foto+3" alt="Jessica no SENAI - Foto 3" class="project-photo" loading="lazy">
-              </div>
-              <div class="project-photo-dots">
-                <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
-                <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
-                <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
-              </div>
-            </div>
-            <div class="project-tech">
-              <span>Gestão Comercial</span>
-              <span>Capacitação</span>
-              <span>Estratégia Regional</span>
-              <span>Desenvolvimento Estratégico</span>
-            </div>
-          </div>
-
-          <!-- SENAI - Coordenadora -->
-          <div class="project-card">
-            <div class="project-company"><i class="fas fa-industry"></i> SENAI Bahia</div>
-            <h3>Coordenadora de Cursos</h3>
-            <p class="project-period"><i class="far fa-calendar-alt"></i> Out 2015 – Jun 2017 · 1 ano e 9 meses</p>
-            <p>Coordenação de cursos na região da Bahia. Gestão de equipes de instrutores, técnicos e estagiários. Planejamento orçamentário, controle de custos e acompanhamento pedagógico das turmas.</p>
-            <div class="project-photos">
-              <div class="project-photo-carousel">
-                <img src="https://placehold.co/600x400?text=SENAI+Coord+Foto+1" alt="Jessica como Coordenadora - Foto 1" class="project-photo active" loading="lazy">
-                <img src="https://placehold.co/600x400?text=SENAI+Coord+Foto+2" alt="Jessica como Coordenadora - Foto 2" class="project-photo" loading="lazy">
-                <img src="https://placehold.co/600x400?text=SENAI+Coord+Foto+3" alt="Jessica como Coordenadora - Foto 3" class="project-photo" loading="lazy">
-              </div>
-              <div class="project-photo-dots">
-                <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
-                <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
-                <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
-              </div>
-            </div>
-            <div class="project-tech">
-              <span>Gestão de Equipes</span>
-              <span>Coordenação Pedagógica</span>
-              <span>Planejamento Orçamentário</span>
-            </div>
-          </div>
-
-          <!-- SENAI CIMATEC - Professor -->
-          <div class="project-card">
-            <div class="project-company"><i class="fas fa-chalkboard"></i> SENAI CIMATEC</div>
-            <h3>Professor para Nível Técnico</h3>
-            <p class="project-period"><i class="far fa-calendar-alt"></i> Jun 2013 – Out 2015 · 2 anos e 5 meses</p>
-            <p>Docência em nível técnico com foco em capacitação e comunicação. Desenvolvimento de conteúdos didáticos e metodologias de ensino adaptadas ao perfil dos alunos.</p>
-            <div class="project-photos">
-              <div class="project-photo-carousel">
-                <img src="https://placehold.co/600x400?text=CIMATEC+Foto+1" alt="Jessica no CIMATEC - Foto 1" class="project-photo active" loading="lazy">
-                <img src="https://placehold.co/600x400?text=CIMATEC+Foto+2" alt="Jessica no CIMATEC - Foto 2" class="project-photo" loading="lazy">
-                <img src="https://placehold.co/600x400?text=CIMATEC+Foto+3" alt="Jessica no CIMATEC - Foto 3" class="project-photo" loading="lazy">
-              </div>
-              <div class="project-photo-dots">
-                <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
-                <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
-                <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
-              </div>
-            </div>
-            <div class="project-tech">
-              <span>Docência</span>
-              <span>Desenvolvimento de Conteúdo</span>
-              <span>Nível Técnico</span>
-            </div>
-          </div>
-
-          <!-- COELBA -->
-          <div class="project-card">
-            <div class="project-company"><i class="fas fa-plug"></i> COELBA</div>
-            <h3>Estagiária</h3>
-            <p class="project-period"><i class="far fa-calendar-alt"></i> 2011 – 2013 · 2 anos</p>
-            <p>Apoio em projetos de melhoria da rede de distribuição elétrica. Emissão de relatórios técnicos e diagnósticos de eficiência energética. Início da trajetória no setor elétrico e de energia.</p>
-            <div class="project-photos">
-              <div class="project-photo-carousel">
-                <img src="https://placehold.co/600x400?text=COELBA+Foto+1" alt="Jessica na COELBA - Foto 1" class="project-photo active" loading="lazy">
-                <img src="https://placehold.co/600x400?text=COELBA+Foto+2" alt="Jessica na COELBA - Foto 2" class="project-photo" loading="lazy">
-                <img src="https://placehold.co/600x400?text=COELBA+Foto+3" alt="Jessica na COELBA - Foto 3" class="project-photo" loading="lazy">
-              </div>
-              <div class="project-photo-dots">
-                <button class="photo-dot active" aria-label="Foto 1" data-index="0"></button>
-                <button class="photo-dot" aria-label="Foto 2" data-index="1"></button>
-                <button class="photo-dot" aria-label="Foto 3" data-index="2"></button>
-              </div>
-            </div>
-            <div class="project-tech">
-              <span>Rede Elétrica</span>
-              <span>Relatórios Técnicos</span>
-              <span>Diagnóstico de Eficiência</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ── Formação Acadêmica ──────────────────────────────────────── -->
-      <section id="formacao" class="section">
+      <!-- ══ Tab: Formação ══════════════════════════════════════════ -->
+      <div class="tab-panel" data-tab-panel="formacao">
+      <section id="formacao" class="section visible">
         <h2>Formação Acadêmica</h2>
         <div class="softwares-grid">
 
@@ -507,9 +564,11 @@
 
         </div>
       </section>
+      </div>
 
-      <!-- ── Certificados ────────────────────────────────────────────── -->
-      <section id="certificados" class="section">
+      <!-- ══ Tab: Certificados ══════════════════════════════════════ -->
+      <div class="tab-panel" data-tab-panel="certificados">
+      <section id="certificados" class="section visible">
         <h2>Licenças &amp; Certificados</h2>
         <div class="certifications-grid">
 
@@ -614,9 +673,11 @@
 
         </div>
       </section>
+      </div>
 
-      <!-- ── Contato ────────────────────────────────────────────────── -->
-      <section id="contato" class="section contact-section">
+      <!-- ══ Tab: Contato ═══════════════════════════════════════════ -->
+      <div class="tab-panel" data-tab-panel="contato">
+      <section id="contato" class="section visible contact-section">
         <h2>Contato</h2>
         <p class="contact-description">Estou disponível para discutir oportunidades, projetos de T&D, consultorias e parcerias. Vamos conversar?</p>
         <div class="contact-grid">
@@ -647,20 +708,20 @@
           </a>
         </div>
       </section>
+      </div>
 
     </section>
   </main>
 
   <footer class="footer">
     <nav class="footer-nav" aria-label="Navegação do rodapé">
-      <a href="#"               class="footer-link">Home</a>
-      <a href="#sobre"          class="footer-link">Sobre</a>
-      <a href="#proposito"      class="footer-link">Propósito</a>
-      <a href="#especialidades" class="footer-link">Especialidades</a>
-      <a href="#experiencia"    class="footer-link">Experiência</a>
-      <a href="#formacao"       class="footer-link">Formação</a>
-      <a href="#certificados"   class="footer-link">Certificados</a>
-      <a href="#contato"        class="footer-link">Contato</a>
+      <a href="#" class="footer-link" data-tab="home">Home</a>
+      <a href="#sobre" class="footer-link" data-tab="sobre">Sobre</a>
+      <a href="#proposito" class="footer-link" data-tab="proposito">Propósito</a>
+      <a href="#especialidades" class="footer-link" data-tab="especialidades">Especialidades</a>
+      <a href="#formacao" class="footer-link" data-tab="formacao">Formação</a>
+      <a href="#certificados" class="footer-link" data-tab="certificados">Certificados</a>
+      <a href="#contato" class="footer-link" data-tab="contato">Contato</a>
     </nav>
     <div class="copyright">
       © <span class="current-year"></span> Jessica Ferraro — Todos os direitos reservados.

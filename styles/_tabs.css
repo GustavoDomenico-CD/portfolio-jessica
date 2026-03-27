@@ -1,0 +1,249 @@
+/* styles/_tabs.css — Tab panels & Experience Timeline */
+
+/* ── Tab Panels ────────────────────────────────────────────── */
+
+.tab-panel {
+  display: none;
+  animation: tabFadeIn 0.4s ease-out;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Timeline Heading ─────────────────────────────────────── */
+
+.timeline-heading {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-green);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  position: relative;
+}
+
+.timeline-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-green);
+}
+
+/* ── Experience Timeline ──────────────────────────────────── */
+
+.experience-timeline {
+  position: relative;
+  padding-left: 32px;
+  max-width: 720px;
+}
+
+/* Vertical line */
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  width: 2px;
+  height: calc(100% - 16px);
+  background: linear-gradient(to bottom, var(--color-green), var(--color-border));
+  border-radius: 1px;
+}
+
+/* ── Timeline Item ────────────────────────────────────────── */
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-5);
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Timeline Marker ──────────────────────────────────────── */
+
+.timeline-marker {
+  position: absolute;
+  left: -32px;
+  top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  transition: all var(--transition-base);
+  display: block;
+}
+
+.timeline-dot.current {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 4px var(--color-green-dim);
+}
+
+.timeline-item:hover .timeline-dot {
+  border-color: var(--color-green);
+}
+
+/* ── Timeline Header (Clickable) ──────────────────────────── */
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-fast);
+}
+
+.timeline-header:hover {
+  border-color: var(--color-green);
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-header[aria-expanded='true'] {
+  border-color: var(--color-green);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: var(--color-surface);
+}
+
+/* ── Timeline Summary ─────────────────────────────────────── */
+
+.timeline-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.timeline-company {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.timeline-company i {
+  font-size: var(--fs-xs);
+}
+
+.timeline-role {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+}
+
+.timeline-period {
+  font-size: var(--fs-xs);
+  color: var(--color-text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ── Timeline Toggle Icon ─────────────────────────────────── */
+
+.timeline-toggle {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text-dim);
+  font-size: var(--fs-xs);
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.timeline-header:hover .timeline-toggle {
+  background-color: var(--color-green-dim);
+  color: var(--color-green);
+}
+
+.timeline-header[aria-expanded='true'] .timeline-toggle {
+  transform: rotate(180deg);
+  background-color: var(--color-green-dim);
+  color: var(--color-green);
+}
+
+/* ── Timeline Details (Expandable) ────────────────────────── */
+
+.timeline-details {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid var(--color-green);
+  border-top: none;
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  opacity: 0;
+  transition:
+    max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    padding 0.3s ease;
+  padding: 0 var(--space-5);
+}
+
+.timeline-details.open {
+  max-height: 800px;
+  opacity: 1;
+  padding: var(--space-5);
+}
+
+.timeline-details p {
+  text-align: left;
+  margin: 0 0 var(--space-4);
+  max-width: 100%;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: var(--lh-loose);
+}
+
+.timeline-details .project-photos {
+  margin-bottom: var(--space-4);
+}
+
+.timeline-details .project-tech {
+  margin-bottom: 0;
+}
