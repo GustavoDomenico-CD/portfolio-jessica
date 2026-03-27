@@ -55,13 +55,14 @@
 }
 
 .name-initial.visible {
-  opacity: 1;
+  opacity: 1 !important;
   animation: heroInitialIn 0.6s ease-out forwards;
 }
 
 /* When full name reveals, initials transition to standard color */
 .typing-title.name-revealed .name-initial {
   color: var(--color-text);
+  opacity: 1;
 }
 
 /* Rest of letters: hidden until reveal */
